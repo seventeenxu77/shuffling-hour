@@ -1,0 +1,39 @@
+# --- Unity 核心忽略项 ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[探]Logs/
+/[Mm]emoryCaptures/
+
+# --- 资源导入产生的临时文件 ---
+*.unitypackage
+*.bundle
+
+# --- 自动生成的工程文件 (IDE) ---
+Visual Studio 解决方案:
+*.sln
+*.csproj
+*.unityproj
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# --- 资产存储文件 (由 OS 产生) ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- 排除用户自定义的配置文件 ---
+/[Aa]ssets/Plugins/Editor/JetBrains*
+.vs/
+.gradle/
+ExportedObj/
+.plastic/
