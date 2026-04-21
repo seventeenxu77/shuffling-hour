@@ -1,21 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class EnermySystem : MonoBehaviour
+public class EnermySystem : Singleton<EnermySystem>
 {
+    [SerializeField]private EnermyBoardView enermyBoardView;
     void OnEnable()
     {
         ActionSystem.AttachPerformer<EnermyTurnGA>(EnermyTurnPerform);
+        ActionSystem.AttachPerformer<AttackHeroGA>(AttackHeroPerform);
     }
     void OnDisable()
     {
         ActionSystem.DetachPerformer<EnermyTurnGA>();
+        ActionSystem.DetachPerformer<AttackHeroGA>();
+    }
+    public void SetUp(List<EnermyData> enermyDatas)
+    {
+        foreach(EnermyData data in enermyDatas)
+        {
+            enermyBoardView.addenermy(data);
+        }
     }
     private IEnumerator EnermyTurnPerform(EnermyTurnGA ga)
     {
-        Debug.Log("Enermy Turn Begin");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("Enermy Turn End");
+        foreach(EnermyView enermyView in enermyBoardView.enermyViews)
+        {
+            AttackHeroGA attackHeroGA=new AttackHeroGA(enermyView);
+            ActionSystem.instance.AddReaction(attackHeroGA);
+        }
+        yield return null;
+    }
+    private IEnumerator AttackHeroPerform(AttackHeroGA ga)
+    {
+        EnermyView enermyView=ga.enermyView;
+        Tween tween=enermyView.transform.DOMoveX(enermyView.transform.position.x-1f,0.15f);
+        yield return tween.WaitForCompletion();
+        tween=enermyView.transform.DOMoveX(enermyView.transform.position.x+1f,0.25f);
+        DealDamageGA dealDamageGA=new(ga.enermyView.Attackpower,new(){HeroSystem.instance.heroView});
+        ActionSystem.instance.AddReaction(dealDamageGA);
+        yield return new WaitForSeconds(0.5f);
     }
 }

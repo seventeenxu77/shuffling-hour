@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MatchUpSystem : MonoBehaviour
 {
-    [SerializeField]private List<CardData>deskdata;
+    [SerializeField]private HeroData heroData;
+    [SerializeField]private List<EnermyData> enermyDatas;
     private void Start()
     {
-        CardSystem.instance.Setup(deskdata);
+        HeroSystem.instance.Setup(heroData);
+        CardSystem.instance.Setup(heroData.deckdata);
+        EnermySystem.instance.SetUp(enermyDatas);
         DrawCardGA draw=new(5);
         ActionSystem.instance.Perform(draw);
     }

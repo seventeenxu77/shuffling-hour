@@ -9,9 +9,9 @@ public class CombantantViewBase : MonoBehaviour
     [SerializeField]private TMP_Text HealthText;
     [SerializeField]public int MaxHealth{get;private set;}
     [SerializeField]public int CurrentHealth{get;private set;}
-    public void SetupBase(SpriteRenderer sprite,int health)
+    public void SetupBase(Sprite sprite,int health)
     {
-        spriteRenderer = sprite;
+        spriteRenderer.sprite = sprite;
         MaxHealth = health;
         CurrentHealth = health;
         UpdateHealthText();
@@ -19,6 +19,12 @@ public class CombantantViewBase : MonoBehaviour
     public void UpdateHealthText()
     {
         HealthText.text = CurrentHealth.ToString();
+    }
+    public void TakeDamage(int amount)
+    {
+        CurrentHealth -= amount;
+        if(CurrentHealth<0)CurrentHealth=0;
+        UpdateHealthText();
     }
 
 

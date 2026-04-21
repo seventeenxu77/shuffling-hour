@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9ec9cccdcad2143bc3be84f0232cb2, type: 3}
+  m_Name: Hero
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  sprite: {fileID: 21300000, guid: 4a393f85f6cb31c4694e3e3c16993f7f, type: 3}
+  deckdata:
+  - {fileID: 11400000, guid: fee926df392a4e049a5ee26d745c0b70, type: 2}
+  - {fileID: 11400000, guid: fee926df392a4e049a5ee26d745c0b70, type: 2}
+  - {fileID: 11400000, guid: fee926df392a4e049a5ee26d745c0b70, type: 2}
+  - {fileID: 11400000, guid: fee926df392a4e049a5ee26d745c0b70, type: 2}
+  - {fileID: 11400000, guid: 38b4cdfb684eeea4fac1a4ac9beadc99, type: 2}
+  - {fileID: 11400000, guid: 38b4cdfb684eeea4fac1a4ac9beadc99, type: 2}
+  - {fileID: 11400000, guid: 38b4cdfb684eeea4fac1a4ac9beadc99, type: 2}
+  - {fileID: 11400000, guid: 38b4cdfb684eeea4fac1a4ac9beadc99, type: 2}
+  - {fileID: 11400000, guid: 38b4cdfb684eeea4fac1a4ac9beadc99, type: 2}
