@@ -19,7 +19,20 @@ public class DamageSystem : Singleton<DamageSystem>
         {
             GameObject damagevx=Instantiate(this.damagevx,target.transform.position,Quaternion.identity);
             target.TakeDamage(ga.amount);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.15f);
+            Destroy(damagevx);
+            if(target.CurrentHealth<=0)
+            {
+                if(target is  EnermyView enermyView)
+                {
+                    KillEnermyGA killEnermyGA=new(enermyView);
+                    ActionSystem.instance.AddReaction(killEnermyGA);
+                }
+                else
+                {
+                    //other
+                }
+            }
         }
     }
 
